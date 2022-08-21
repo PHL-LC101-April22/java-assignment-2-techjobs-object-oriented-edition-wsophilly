@@ -36,19 +36,20 @@ public class JobTest {
         //TODO: Test the constructor correctly assigns both the class and value of each field
         // name first
        assertEquals("Product tester", test_job.getName());
+        assertEquals("ACME", test_job.getEmployer().getValue());
+        assertEquals("Desert", test_job.getLocation().getValue());
+        assertEquals("Quality control", test_job.getPositionType().getValue());
+        assertEquals("Persistence", test_job.getCoreCompetency().getValue());
        assertTrue(test_job.getName() instanceof String);
        // then Employer
-        assertEquals("ACME", test_job.getEmployer().getValue());
         assertTrue(test_job.getEmployer() instanceof Employer);
         // then Location
-        assertEquals("Desert", test_job.getLocation().getValue());
         assertTrue(test_job.getLocation() instanceof Location);
         // Position Type
-        assertEquals("Quality control", test_job.getPositionType().getValue());
         assertTrue(test_job.getPositionType() instanceof PositionType);
         // Core Competency
-        assertEquals("Persistence", test_job.getCoreCompetency().getValue());
         assertTrue(test_job.getCoreCompetency() instanceof CoreCompetency);
+
 
     }
 

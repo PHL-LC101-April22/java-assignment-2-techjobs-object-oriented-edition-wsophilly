@@ -34,8 +34,28 @@ public class Job {
 
       }
 
+
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
+
+    @Override
+    public String toString(){
+        //TODO: if a field is empty , the method should add "Data not available" after the label.
+
+        String output = null;
+
+        if ((this.name == "") || (this.employer.getValue() == "") || (this.location.getValue() == "") ||
+                (this.positionType.getValue() == "") || (this.coreCompetency.getValue() == "")){
+            System.out.println("Data not available");
+        }
+         else  output = String.format("\nID: %d\n" +
+                "Name: %s\n" +
+                "Employer: %s\n" +
+                "Location: %s\n" +
+                "Position Type: %s\n" +
+                "Core Competency: %s\n", id, name, employer, location, positionType, coreCompetency);
+        return output;
+    }
 
     @Override
     public boolean equals(Object o) {

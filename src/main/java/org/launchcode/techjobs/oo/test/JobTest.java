@@ -73,12 +73,54 @@ public class JobTest {
 
            String jobString = test_job.toString();
 
-
             assertEquals('\n', jobString.charAt(0));
             assertEquals('\n',jobString.charAt((jobString.length() - 1)));
 
                 return ;
             }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+
+        //TODO: The string should contain a label for each field, followed by the data stored in that field.
+        // Each field should be on its own line
+
+        String jobString = test_job.toString();
+        System.out.println(jobString);
+
+        //assertTrue("true",test_job.getId().contains("Id : 5");
+        assertTrue("true",test_job.getName().contains("Product tester"));
+        assertTrue("true",test_job.getEmployer().getValue().contains("ACME"));
+        assertTrue("true",test_job.getLocation().getValue().contains("Desert"));
+        assertTrue("true",test_job.getPositionType().getValue().contains("Quality control"));
+        assertTrue("true",test_job.getName().contains("Product tester"));
+
+
+        return ;
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+
+        //TODO: If a field is empty, the method should add, “Data not available” after the label
+
+        Job emptyJob = new Job("", new Employer(""), new Location(""), new PositionType(""),
+                new CoreCompetency(""));
+
+
+        assertEquals("",
+                emptyJob.getName());
+        assertEquals("",
+                emptyJob.getLocation().getValue());
+        assertEquals("",
+                emptyJob.getEmployer().getValue());
+        assertEquals("",
+                emptyJob.getPositionType().getValue());
+        assertEquals("",
+                emptyJob.getCoreCompetency().getValue());
+
+        return ;
+    }
 
 
 

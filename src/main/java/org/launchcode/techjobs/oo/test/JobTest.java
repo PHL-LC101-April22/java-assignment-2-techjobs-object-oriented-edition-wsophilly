@@ -14,13 +14,14 @@ import static org.junit.Assert.*;
 @RunWith(JUnit4.class)
 public class JobTest {
 
-    Job testEmptyConstructorJob1 = new Job();
-    Job testEmptyConstructorJob2 = new Job();
+
 
     @Test
     public void testSettingJobId() {
+        Job testEmptyConstructorJob1 = new Job();
+        Job testEmptyConstructorJob2 = new Job();
 //TODO: Test whether ID of two objects are distinct
-        assertNotEquals(testEmptyConstructorJob1.getId(),testEmptyConstructorJob2.getId(),.001);
+        assertNotEquals(testEmptyConstructorJob1.getId(),testEmptyConstructorJob2.getId());
     }
 
     Job test_job;
@@ -64,7 +65,7 @@ public class JobTest {
 
         //TODO:  Generate two Job objects that have identical field values EXCEPT for id.
 
-        assertNotEquals(testIdenticalFieldExceptID1, testIdenticalFieldExceptID2);
+        assertFalse(testIdenticalFieldExceptID1.equals(testIdenticalFieldExceptID2));
 
     }
         @Test
@@ -72,12 +73,13 @@ public class JobTest {
 
         //TODO: when passed a Job object, return a string that contains a blank line before and after the job info
 
-           String jobString = test_job.toString();
+            Job newjob = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                    new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-            assertEquals('\n', jobString.charAt(0));
-            assertEquals('\n',jobString.charAt((jobString.length() - 1)));
 
-                return ;
+            assertEquals('\n',newjob.toString().charAt(0));
+            assertEquals('\n',newjob.toString().charAt((newjob.toString().length() - 1)));
+
             }
 
     @Test
@@ -86,18 +88,20 @@ public class JobTest {
         //TODO: The string should contain a label for each field, followed by the data stored in that field.
         // Each field should be on its own line
 
-        String jobString = test_job.toString();
-        System.out.println(jobString);
+
 
         //assertTrue("true",test_job.getId().contains("Id : 5");
-        assertTrue("true",test_job.getName().contains("Product tester"));
-        assertTrue("true",test_job.getEmployer().getValue().contains("ACME"));
-        assertTrue("true",test_job.getLocation().getValue().contains("Desert"));
-        assertTrue("true",test_job.getPositionType().getValue().contains("Quality control"));
-        assertTrue("true",test_job.getName().contains("Product tester"));
+        assertTrue(test_job.toString().contains("Name: Product tester"));
+        assertTrue(test_job.toString().contains("Employer: ACME"));
+        assertTrue(test_job.toString().contains("Location: Desert"));
+        assertTrue(test_job.toString().contains("Position Type: Quality control"));
+        assertTrue(test_job.toString().contains("Core Competency: Persistence"));
+        assertEquals("Product tester",test_job.getName());
+        assertEquals("ACME",test_job.getEmployer().toString());
+        assertEquals("Desert",test_job.getLocation().toString());
+        assertEquals("Quality control",test_job.getPositionType().toString());
+        assertEquals("Persistence",test_job.getCoreCompetency().toString());
 
-
-        return ;
     }
 
     @Test
@@ -120,12 +124,7 @@ public class JobTest {
         assertEquals("",
                 emptyJob.getCoreCompetency().getValue());
 
-        return ;
     }
-
-
-
-
 
 
     }

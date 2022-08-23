@@ -2,18 +2,18 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
-public abstract class  Jobfield {
+public abstract class  JobField {
 
     private int id;
     private static int nextId = 1;
     private String value;
 
-    public Jobfield() {
+    public JobField() {
         id = nextId;
         nextId++;
     }
 
-    public Jobfield(String value) {
+    public JobField(String value) {
         this();
         this.value = value;
     }
@@ -39,18 +39,6 @@ public abstract class  Jobfield {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public static int getNextId() {
-        return nextId;
-    }
-
-    public static void setNextId(int nextId) {
-        Jobfield.nextId = nextId;
     }
 
     public String getValue() {

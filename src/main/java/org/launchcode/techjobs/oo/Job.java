@@ -39,22 +39,32 @@ public class Job {
     //  match.
 
     @Override
-    public String toString(){
+    public String toString() {
         //TODO: if a field is empty , the method should add "Data not available" after the label.
 
-        String output = null;
 
-        if ((this.name == "") || (this.employer.getValue() == "") || (this.location.getValue() == "") ||
-                (this.positionType.getValue() == "") || (this.coreCompetency.getValue() == "")){
-            System.out.println("Data not available");
+
+        if (this.name.equals("")) {
+            name = "Data not available";
         }
-         else  output = String.format("\nID: %d\n" +
-                "Name: %s\n" +
-                "Employer: %s\n" +
-                "Location: %s\n" +
-                "Position Type: %s\n" +
-                "Core Competency: %s\n", id, name, employer, location, positionType, coreCompetency);
-        return output;
+        if (this.employer.getValue().equals("") || this.employer.getValue() == null) {
+            employer.setValue("Data not available");
+        }
+        if (this.location.getValue().equals("") || this.employer.getValue() == null) {
+            location.setValue("Data not available");
+        }
+        if (this.positionType.getValue().equals("") || (this.positionType.getValue() == null)) {
+            positionType.setValue("Data not available");
+        if (this.coreCompetency.getValue().equals("") || (this.coreCompetency.getValue() == null)) {
+                coreCompetency.setValue("Data not available");
+        }
+
+
+        }
+        return "\n" + "ID: " + this.id + "\nName: " + this.name + "\nEmployer: " + this.employer.getValue() +
+                "\nLocation: " + this.location.getValue() + "\nPosition Type: " + this.positionType.getValue() + "\nCore " +
+                "Competency: " +
+                this.coreCompetency.getValue() + "\n";
     }
 
     @Override

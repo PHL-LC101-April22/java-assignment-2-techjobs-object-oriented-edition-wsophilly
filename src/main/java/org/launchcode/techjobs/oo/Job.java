@@ -24,13 +24,14 @@ public class Job {
         nextId++;
     }
 
-      public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+      public Job(String names, Employer employers, Location locations, PositionType positionTypes,
+                 CoreCompetency coreCompetencys) {
           this();
-          this.name = name;
-          this.employer = employer;
-          this.location = location;
-          this.positionType = positionType;
-          this.coreCompetency = coreCompetency;
+          name = names;
+          employer = employers;
+          location = locations;
+          positionType = positionTypes;
+          coreCompetency = coreCompetencys;
 
       }
 
@@ -42,29 +43,36 @@ public class Job {
     public String toString() {
         //TODO: if a field is empty , the method should add "Data not available" after the label.
 
-
-
-        if (this.name.equals("")) {
+        if (name.equals("")) {
             name = "Data not available";
         }
-        if (this.employer.getValue().equals("") || this.employer.getValue() == null) {
+        if (employer.getValue().equals("") || employer.getValue() == null) {
             employer.setValue("Data not available");
         }
-        if (this.location.getValue().equals("") || this.employer.getValue() == null) {
+        if (location.getValue().equals("") || employer.getValue() == null) {
             location.setValue("Data not available");
         }
-        if (this.positionType.getValue().equals("") || (this.positionType.getValue() == null)) {
+        if (positionType.getValue().equals("") || (positionType.getValue() == null)) {
             positionType.setValue("Data not available");
-        if (this.coreCompetency.getValue().equals("") || (this.coreCompetency.getValue() == null)) {
+        if (coreCompetency.getValue().equals("") || (coreCompetency.getValue() == null)) {
                 coreCompetency.setValue("Data not available");
         }
 
 
         }
-        return "\n" + "ID: " + this.id + "\nName: " + this.name + "\nEmployer: " + this.employer.getValue() +
-                "\nLocation: " + this.location.getValue() + "\nPosition Type: " + this.positionType.getValue() + "\nCore " +
-                "Competency: " +
-                this.coreCompetency.getValue() + "\n";
+  //      return "\n" + "ID: " + this.id + "\nName: " + this.name + "\nEmployer: " + this.employer.getValue() +
+  //              "\nLocation: " + this.location.getValue() + "\nPosition Type: " + this.positionType.getValue() +
+  //              "\nCore " +
+ //               "Competency: " +
+ //               this.coreCompetency.getValue() + "\n";
+        String output =  output = String.format("\nID: %d\n" +
+                "Name: %s\n" +
+                "Employer: %s\n" +
+                "Location: %s\n" +
+                "Position Type: %s\n" +
+                "Core Competency: %s\n", id, name, employer, location, positionType, coreCompetency);
+        return output;
+
     }
 
     @Override

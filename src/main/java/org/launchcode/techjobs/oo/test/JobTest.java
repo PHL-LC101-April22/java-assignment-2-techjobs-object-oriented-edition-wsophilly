@@ -34,13 +34,16 @@ public class JobTest {
     @Test
     public void testJobConstructorSetsAllFields() {
 
+        test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
         //TODO: Test the constructor correctly assigns both the class and value of each field
         // name first
-       assertEquals("Product tester", test_job.getName());
-        assertEquals("ACME", test_job.getEmployer().getValue());
-        assertEquals("Desert", test_job.getLocation().getValue());
-        assertEquals("Quality control", test_job.getPositionType().getValue());
-        assertEquals("Persistence", test_job.getCoreCompetency().getValue());
+        assertEquals("Product tester", test_job.getName());
+        assertEquals("ACME", test_job.getEmployer().toString());
+        assertEquals("Desert", test_job.getLocation().toString());
+        assertEquals("Quality control", test_job.getPositionType().toString());
+        assertEquals("Persistence", test_job.getCoreCompetency().toString());
        assertTrue(test_job.getName() instanceof String);
        // then Employer
         assertTrue(test_job.getEmployer() instanceof Employer);
@@ -88,7 +91,8 @@ public class JobTest {
         //TODO: The string should contain a label for each field, followed by the data stored in that field.
         // Each field should be on its own line
 
-
+        test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
         //assertTrue("true",test_job.getId().contains("Id : 5");
         assertTrue(test_job.toString().contains("Name: Product tester"));
@@ -112,17 +116,9 @@ public class JobTest {
         Job emptyJob = new Job("", new Employer(""), new Location(""), new PositionType(""),
                 new CoreCompetency(""));
 
-
-        assertEquals("",
-                emptyJob.getName());
-        assertEquals("",
-                emptyJob.getLocation().getValue());
-        assertEquals("",
-                emptyJob.getEmployer().getValue());
-        assertEquals("",
-                emptyJob.getPositionType().getValue());
-        assertEquals("",
-                emptyJob.getCoreCompetency().getValue());
+        assertEquals("\nID: 4\nName: Data not available\nEmployer: Data not available\nLocation: Data not " +
+                "available\nPosition Type: Data not available\nCore Competency: Data not available\n",
+                emptyJob.toString());
 
     }
 

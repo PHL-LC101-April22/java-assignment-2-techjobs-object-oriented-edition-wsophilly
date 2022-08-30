@@ -134,7 +134,9 @@ public class TestTaskFive extends AbstractTest {
         Class jobTestClass = getClassByName("test.JobTest");
         JobTest jobTest = (JobTest) jobTestClass.getConstructor().newInstance();
         Method testToStringHandlesEmptyField = jobTestClass.getMethod("testToStringHandlesEmptyField");
-
+        System.out.println("\n"+job.toString());
+        System.out.println("\n"+jobTest);
+        System.out.println("\n"+testToStringHandlesEmptyField);
         new Expectations() {{
             job.toString(); minTimes = 1;
         }};
